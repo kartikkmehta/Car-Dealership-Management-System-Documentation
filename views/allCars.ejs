@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Cars</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        a:hover {
+            color: #000;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+
+        /* Additional CSS styles */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+}
+
+td img {
+    max-width: 80px;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    color: #000;
+}
+
+.add-car-button {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.add-car-button:hover {
+    background-color: #45a049;
+}
+
+button {
+    padding: 6px 12px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>All Cars</h1>
+   <form action="/search" method="POST">
+  <input type="text" name="vin" placeholder="Enter VIN...">
+  <button type="submit">Search</button>
+</form>
+
+
+    <!-- Button to add car-->
+    <a href="/addCars" class="add-car-button">Add Car</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Color</th>
+                <th>VIN</th>
+                <th>Mileage</th>
+                <th>Fuel Type</th>
+                <th>Transmission</th>
+                <th>Condition</th>
+                <th>Image</th>
+                <th>Update Car</th>
+                <th>Delete Car</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% cars.forEach(car=> { %>
+                <tr>
+                    <td>
+                        <%= car.make %>
+                    </td>
+                    <td>
+                        <%= car.model %>
+                    </td>
+                    <td>
+                        <%= car.year %>
+                    </td>
+                    <td>
+                        <%= car.price %>
+                    </td>
+                    <td>
+                        <%= car.color %>
+                    </td>
+                    <td>
+                        <%= car.vin %>
+                    </td>
+                    <td>
+                        <%= car.mileage %>
+                    </td>
+                    <td>
+                        <%= car.fuel %>
+                    </td>
+                    <td>
+                        <%= car.transmission %>
+                    </td>
+                    <td>
+                        <%= car.condition %>
+                    </td>
+                    <td><img src="data:image/<%= car.image.contentType %>;base64,<%= car.image.data.toString('base64') %>"
+                        alt="Car Image" style="max-width: 100px;"></td>
+                    <td><a href="/updateCar/<%= car._id %>"><button type="button">Update</button></a></td>
+                    <td>
+                        <% if (admin) { %>
+                           <!-- Display delete button only if user is admin -->
+                        <form action="/deleteCar/<%= car._id %>" method="POST">
+                            <button type="submit" onclick="showSuccessMessage()">Delete</button>
+                        </form>
+                    <% } %>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+    <a href="/">Back to Home Page</a>
+    <script>
+        function showSuccessMessage() {
+            alert("Car deleted successfully!");
+        }
+    </script>
+</body>
+
+</html>

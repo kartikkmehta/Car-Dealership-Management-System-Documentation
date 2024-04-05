@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <form action="/search" method="POST">
+        <input type="text" name="vin" placeholder="Enter VIN...">
+        <button type="submit">Search</button>
+      </form>
+      
+
+   
+      <div>
+        <h2>Car Details:</h2>
+        <% if (car) { %>
+            <p>Make: <%= car.make %></p>
+            <p>Model: <%= car.model %></p>
+            <p>Year: <%= car.year %></p>
+            <p>Color: <%= car.color %></p>
+            <p>VIN: <%= car.vin %></p>
+            <p>Mileage: <%= car.mileage %></p>
+        <% } else { %>
+            <p>No car found with the specified VIN.</p>
+        <% } %>
+    </div>
+    
+            <!-- Add other car details as needed -->
+        
+</body>
+</html>

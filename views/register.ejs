@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #000000;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 18px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+
+        <div class="form-group">
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="security_q">Security Question:</label><br>
+            <select id="security_q" name="security_q">
+                <option value="Name_of_pet">Name of Pet</option>
+                <option value="Best_friend">Best Friend</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="security_a">Security Answer:</label><br>
+            <input type="text" id="security_a" name="security_a" required>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Role:</label><br>
+            <select id="role" name="role">
+                <option value="admin">Admin</option>
+                <option value="salesperson">Salesperson</option>
+            </select>
+        </div>
+
+        <input type="submit" value="Register" onclick="showSuccessMessage()">
+    </form>
+    <script>
+        function showSuccessMessage() {
+            alert("Successfully registered!");
+        }
+    </script>
+</body>
+
+</html>

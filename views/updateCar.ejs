@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Car</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        a:hover {
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Update Car</h1>
+
+    <form action="/updateCar/<%= car._id %>?_method=PUT" method="POST">
+
+        <!--Make-->
+        <div class="form-group">
+            <label for="make">Make:</label>
+            <input type="text" name="make" value="<%= car.make %>" disabled>
+        </div>
+
+        <!--Model-->
+        <div class="form-group">
+            <label for="model">Model:</label>
+            <input type="text" name="model" value="<%= car.model %>" disabled>
+        </div>
+
+        <!--Year-->
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="text" name="year" value="<%= car.year %>" disabled>
+        </div>
+
+        <!--Price-->
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" name="price" placeholder="Price">
+        </div>
+
+        <!--Color-->
+        <div class="form-group">
+            <label for="color">Color:</label>
+            <input type="text" name="color" placeholder="Color">
+        </div>
+
+        <!--VIN-->
+        <div class="form-group">
+            <label for="vin">VIN:</label>
+            <input type="text" name="vin" value="<%= car.vin %>" disabled>
+        </div>
+
+        <!--Mileage-->
+        <div class="form-group">
+            <label for="mileage">Mileage:</label>
+            <input type="text" name="mileage" placeholder="Mileage">
+        </div>
+
+        <!--Fuel-->
+        <div class="form-group">
+            <label for="fuel">Fuel:</label>
+            <input type="text" name="fuel" value="<%= car.fuel %>" disabled>
+        </div>
+
+        <!--Transmission-->
+        <div class="form-group">
+            <label for="transmission">Transmission:</label>
+            <input type="text" name="transmission" value="<%= car.transmission %>" disabled>
+        </div>
+        <!--Condition-->
+        <div class="form-group">
+            <label for="condition">Condition:</label>
+            <input type="text" name="condition" placeholder="Condition">
+        </div>
+      
+            <button type="submit" onclick="showSuccessMessage()">Update</button>
+      
+    </form>
+        
+
+    <a href="/allCars">Back to All Cars</a>
+
+    <script>
+        function showSuccessMessage() {
+            alert("Car updated successfully!");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Car</title>
+</head>
+
+<body>
+    <h1>Delete Car</h1>
+    <% if (admin) { %>
+        <!-- Display delete form only if user is admin -->
+        <form action="/deleteCar/<%= car._id %>?_method=DELETE" method="POST">
+            <input type="text" name="id" value="<%= car.id %>">
+            <button type="submit" onclick="showSuccessMessage()">Delete</button>
+        </form>
+        <% } %>
+    <a href="/">Back to All Items</a>
+    <script>
+        function showSuccessMessage() {
+            alert("Car deleted successfully!");
+        }
+    </script>
+</body>
+
+</html>
